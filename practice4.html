@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Multiplication Table</title>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      text-align: center;
+      padding: 5px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+    <h1>EECS 348 Lab Three Practice Four</h1>
+    <form method="get">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" name="number" min="1" required>
+        <input type="submit" value="Show Table">
+    </form>
+
+    <?php
+    if (isset($_GET['number']) && is_numeric($_GET['number']) && $_GET['number'] > 0) {
+            $n = intval($_GET['number']);
+            echo "<table>";
+            // Header row
+            echo "<tr><th></th>";
+            for ($col = 1; $col <= $n; $col++) {
+                    echo "<th>$col</th>";
+            }
+            echo "</tr>";
+            // Table rows
+            for ($row = 1; $row <= $n; $row++) {
+                    echo "<tr><th>$row</th>";
+                    for ($col = 1; $col <= $n; $col++) {
+                            echo "<td>" . ($row * $col) . "</td>";
+                    }
+                    echo "</tr>";
+            }
+            echo "</table>";
+    }
+    ?>
